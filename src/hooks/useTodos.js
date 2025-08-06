@@ -105,6 +105,23 @@ const useTodos = () => {
     );
   };
 
+  const updateTodoComment = (id, comment) => {
+    if (!activeListId) return;
+    
+    setTodoLists(prev => 
+      prev.map(list => 
+        list.id === activeListId 
+          ? { 
+              ...list, 
+              todos: list.todos.map(todo => 
+                todo.id === id ? { ...todo, comment: comment.trim() || null } : todo
+              )
+            }
+          : list
+      )
+    );
+  };
+
   const importTodos = (importedTodos) => {
     if (!activeListId) return;
     
@@ -162,6 +179,7 @@ const useTodos = () => {
     addTodo,
     toggleTodo,
     deleteTodo,
+    updateTodoComment,
     importTodos,
     importTodoLists
   };

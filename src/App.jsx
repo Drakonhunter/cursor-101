@@ -108,6 +108,7 @@ function App() {
     addTodo, 
     toggleTodo, 
     deleteTodo, 
+    updateTodoComment,
     importTodos, 
     importTodoLists 
   } = useTodos();
@@ -138,6 +139,7 @@ function App() {
                   activeList={activeList}
                   onToggle={toggleTodo}
                   onDelete={deleteTodo}
+                  onUpdateComment={updateTodoComment}
                 />
               </>
             ) : (

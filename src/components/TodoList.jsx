@@ -24,7 +24,7 @@ const EmptyState = styled.div`
   justify-content: center;
 `;
 
-const TodoList = ({ activeList, onToggle, onDelete }) => {
+const TodoList = ({ activeList, onToggle, onDelete, onUpdateComment }) => {
   if (!activeList) {
     return (
       <EmptyState>
@@ -49,6 +49,7 @@ const TodoList = ({ activeList, onToggle, onDelete }) => {
           todo={todo}
           onToggle={onToggle}
           onDelete={onDelete}
+          onUpdateComment={onUpdateComment}
         />
       ))}
     </TodoListContainer>
