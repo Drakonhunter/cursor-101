@@ -10,6 +10,7 @@ src/
 │   ├── Header.jsx      # Application header with title and subtitle
 │   ├── TodoForm.jsx    # Form for adding new todos
 │   ├── TodoStats.jsx   # Statistics display (completion count, progress)
+│   ├── TodoActions.jsx # Import/export functionality for sharing todo lists
 │   ├── TodoItem.jsx    # Individual todo item with actions
 │   └── TodoList.jsx    # Container for todo items with empty state
 ├── hooks/              # Custom React hooks
@@ -35,6 +36,13 @@ src/
 - Displays progress percentage
 - Conditionally renders based on todo count
 
+### TodoActions
+- Provides import/export functionality for sharing todo lists
+- Export: Downloads todos as a JSON file with timestamp
+- Import: Reads JSON files and merges with existing todos
+- Includes validation and duplicate prevention
+- Perfect for sharing todo lists between users
+
 ### TodoItem
 - Individual todo item with checkbox, text, status tag, and delete button
 - Handles completion status and priority display
@@ -49,9 +57,25 @@ src/
 
 ### useTodos
 - Manages todo state and localStorage persistence
-- Provides add, toggle, and delete functions
+- Provides add, toggle, delete, and import functions
 - Handles error handling for localStorage operations
 - Automatically saves changes to localStorage
+- Validates imported todo data and prevents duplicates
+
+## Features
+
+### Import/Export Functionality
+- **Export**: Creates a timestamped JSON file with all todos
+- **Import**: Reads JSON files and merges with existing todos
+- **Validation**: Ensures imported data is valid
+- **Duplicate Prevention**: Avoids adding todos that already exist
+- **User Feedback**: Provides clear success/error messages
+
+### Usage for Sharing
+1. Export your todo list using the "📤 Export Todos" button
+2. Send the generated JSON file to others
+3. They can import it using the "📥 Import Todos" button
+4. Their existing todos are preserved, new ones are added
 
 ## Benefits of This Structure
 
@@ -61,6 +85,7 @@ src/
 4. **Testability**: Individual components can be tested in isolation
 5. **Scalability**: Easy to add new features or modify existing ones
 6. **Professional Structure**: Follows React best practices and conventions
+7. **Sharing Capability**: Enables easy collaboration and todo list sharing
 
 ## State Management
 
@@ -69,5 +94,6 @@ The application uses a custom hook (`useTodos`) to manage state, which provides:
 - localStorage persistence
 - Clean API for todo operations
 - Error handling for data persistence
+- Import/export functionality with validation
 
 This structure makes the codebase much more maintainable and follows modern React development patterns. 
