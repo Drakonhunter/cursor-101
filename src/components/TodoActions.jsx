@@ -50,17 +50,17 @@ const TodoActions = ({ todoLists, onImportTodoLists }) => {
     <div className="todo-actions">
       <div className="action-buttons">
         <button 
+          onClick={handleImportClick} 
+          className="action-button import-button"
+        >
+          📥 Import
+        </button>
+        <button 
           onClick={exportTodoLists} 
           className="action-button export-button"
           disabled={!todoLists || todoLists.length === 0}
         >
-          📤 Export All Lists
-        </button>
-        <button 
-          onClick={handleImportClick} 
-          className="action-button import-button"
-        >
-          📥 Import All Lists
+          📤 Export
         </button>
       </div>
       <input
@@ -70,11 +70,6 @@ const TodoActions = ({ todoLists, onImportTodoLists }) => {
         onChange={importTodoLists}
         style={{ display: 'none' }}
       />
-      {todoLists && todoLists.length > 0 && (
-        <div className="export-info">
-          <small>Share all your todo lists by exporting and sending the file to others!</small>
-        </div>
-      )}
     </div>
   );
 };

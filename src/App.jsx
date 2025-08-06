@@ -26,27 +26,35 @@ function App() {
   return (
     <div className="app">
       <div className="container">
-        <Header />
-        <TodoActions todoLists={todoLists} onImportTodoLists={importTodoLists} />
-        <TodoListManager 
-          todoLists={todoLists}
-          activeListId={activeListId}
-          onAddList={addList}
-          onUpdateList={updateList}
-          onDeleteList={deleteList}
-          onSetActiveList={setActiveList}
-        />
-        {activeList && (
-          <>
-            <TodoForm onAddTodo={addTodo} />
-            <TodoStats activeList={activeList} />
-          </>
-        )}
-        <TodoList 
-          activeList={activeList}
-          onToggle={toggleTodo}
-          onDelete={deleteTodo}
-        />
+        <div className="sidebar">
+          <Header />
+          <TodoActions todoLists={todoLists} onImportTodoLists={importTodoLists} />
+          <TodoListManager 
+            todoLists={todoLists}
+            activeListId={activeListId}
+            onAddList={addList}
+            onUpdateList={updateList}
+            onDeleteList={deleteList}
+            onSetActiveList={setActiveList}
+          />
+        </div>
+        <div className="main-content">
+          {activeList ? (
+            <>
+              <TodoForm onAddTodo={addTodo} />
+              <TodoStats activeList={activeList} />
+              <TodoList 
+                activeList={activeList}
+                onToggle={toggleTodo}
+                onDelete={deleteTodo}
+              />
+            </>
+          ) : (
+            <div className="empty-state">
+              <p>Select or create a todo list to get started!</p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

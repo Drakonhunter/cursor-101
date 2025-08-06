@@ -28,10 +28,28 @@ body {
   background: #2a2a2a;
   border-radius: 8px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  padding: 32px;
   width: 100%;
-  max-width: 700px;
+  max-width: 1200px;
+  min-height: 600px;
   border: 1px solid #404040;
+  display: flex;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 280px;
+  background: #333333;
+  border-right: 1px solid #404040;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
 }
 
 header {
@@ -56,11 +74,9 @@ h1 {
 }
 
 .todo-list-manager {
-  margin-bottom: 24px;
-  padding: 20px;
-  background: #333333;
-  border-radius: 6px;
-  border: 1px solid #404040;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .list-selector h3 {
@@ -70,104 +86,10 @@ h1 {
   margin-bottom: 16px;
 }
 
-.list-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 16px;
-}
-
-.list-tab {
-  background: #2a2a2a;
-  border: 1px solid #404040;
-  border-radius: 4px;
-  transition: all 0.2s ease;
-}
-
-.list-tab.active {
-  border-color: #4a9eff;
-  background: #1a1a1a;
-}
-
-.list-tab-content {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-}
-
-.list-tab-button {
-  background: none;
-  border: none;
-  color: #e0e0e0;
-  font-size: 0.9rem;
-  font-weight: 500;
-  cursor: pointer;
-  padding: 0;
-  text-align: left;
-  flex: 1;
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.list-tab.active .list-tab-button {
-  color: #4a9eff;
-}
-
-.list-actions {
-  display: flex;
-  gap: 4px;
-}
-
-.edit-button,
-.delete-list-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 2px;
-  font-size: 0.8rem;
-  opacity: 0.7;
-  transition: opacity 0.2s ease;
-}
-
-.edit-button:hover,
-.delete-list-button:hover {
-  opacity: 1;
-}
-
-.edit-list {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-}
-
-.edit-list-input {
-  flex: 1;
-  background: #1a1a1a;
-  border: 1px solid #4a9eff;
-  border-radius: 3px;
-  padding: 4px 8px;
-  color: #e0e0e0;
-  font-size: 0.9rem;
-  outline: none;
-}
-
-.edit-cancel-button {
-  background: #ff4757;
-  border: none;
-  color: white;
-  border-radius: 3px;
-  padding: 4px 8px;
-  cursor: pointer;
-  font-size: 0.8rem;
-}
-
 .add-list-form {
   display: flex;
   gap: 8px;
+  margin-bottom: 20px;
 }
 
 .add-list-input {
@@ -202,11 +124,164 @@ h1 {
   transform: translateY(-1px);
 }
 
-.no-list-message {
+.list-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.list-tab {
+  background: #2a2a2a;
+  border: 1px solid #404040;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.list-tab.active {
+  border-color: #4a9eff;
+  background: #1a1a1a;
+}
+
+.list-tab-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+}
+
+.list-tab-button {
+  background: none;
+  border: none;
+  color: #e0e0e0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.list-tab.active .list-tab-button {
+  color: #4a9eff;
+}
+
+.list-actions {
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.list-tab:hover .list-actions {
+  opacity: 1;
+}
+
+.edit-button,
+.delete-list-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  font-size: 0.8rem;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.edit-button:hover,
+.delete-list-button:hover {
+  opacity: 1;
+}
+
+.edit-list {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+}
+
+.edit-list-input {
+  flex: 1;
+  background: #1a1a1a;
+  border: 1px solid #4a9eff;
+  border-radius: 3px;
+  padding: 4px 8px;
+  color: #e0e0e0;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.edit-cancel-button {
+  background: #ff4757;
+  border: none;
+  color: white;
+  border-radius: 3px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.todo-actions {
+  margin-bottom: 20px;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.action-button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex: 1;
+}
+
+.export-button {
+  background: #00b894;
+  color: white;
+}
+
+.export-button:hover:not(:disabled) {
+  background: #00a085;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 184, 148, 0.3);
+}
+
+.export-button:disabled {
+  background: #505050;
+  color: #808080;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.import-button {
+  background: #4a9eff;
+  color: white;
+}
+
+.import-button:hover {
+  background: #3a8eef;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(74, 158, 255, 0.3);
+}
+
+.export-info {
   text-align: center;
-  padding: 20px;
   color: #b0b0b0;
-  font-style: italic;
+  font-size: 0.8rem;
 }
 
 .todo-form {
@@ -257,7 +332,7 @@ h1 {
 .add-button:hover {
   background: #3a8eef;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(74, 158, 255, 0.3);
+  box-shadow: 0 4px 12px rgba(49, 130, 206, 0.2);
 }
 
 .add-button:active {
@@ -282,71 +357,12 @@ h1 {
   font-weight: 500;
 }
 
-.todo-actions {
-  margin-bottom: 20px;
-  padding: 16px;
-  background: #333333;
-  border-radius: 6px;
-  border: 1px solid #404040;
-}
-
-.action-buttons {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 8px;
-}
-
-.action-button {
-  padding: 10px 16px;
-  border: none;
-  border-radius: 4px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  flex: 1;
-}
-
-.export-button {
-  background: #00b894;
-  color: white;
-}
-
-.export-button:hover:not(:disabled) {
-  background: #00a085;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 184, 148, 0.3);
-}
-
-.export-button:disabled {
-  background: #505050;
-  color: #808080;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
-}
-
-.import-button {
-  background: #4a9eff;
-  color: white;
-}
-
-.import-button:hover {
-  background: #3a8eef;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(74, 158, 255, 0.3);
-}
-
-.export-info {
-  text-align: center;
-  color: #b0b0b0;
-  font-size: 0.8rem;
-}
-
 .todo-list {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  flex: 1;
+  overflow-y: auto;
 }
 
 .todo-item {
@@ -474,6 +490,10 @@ h1 {
   background: #333333;
   border-radius: 4px;
   border: 1px solid #404040;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @keyframes slideIn {
@@ -488,10 +508,32 @@ h1 {
 }
 
 /* Responsive design */
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .container {
-    padding: 20px;
+    flex-direction: column;
+    max-width: 100%;
     margin: 10px;
+  }
+  
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #404040;
+    padding: 16px;
+  }
+  
+  .main-content {
+    padding: 20px;
+  }
+  
+  .list-tabs {
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+  
+  .list-tab {
+    min-width: 150px;
   }
   
   h1 {

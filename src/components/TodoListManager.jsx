@@ -47,7 +47,19 @@ const TodoListManager = ({
   return (
     <div className="todo-list-manager">
       <div className="list-selector">
-        <h3>Todo Lists</h3>
+        <form onSubmit={handleAddList} className="add-list-form">
+          <input
+            type="text"
+            value={newListName}
+            onChange={(e) => setNewListName(e.target.value)}
+            placeholder="New list name..."
+            className="add-list-input"
+          />
+          <button type="submit" className="add-list-button">
+            +
+          </button>
+        </form>
+
         <div className="list-tabs">
           {todoLists.map(list => (
             <div 
@@ -101,19 +113,6 @@ const TodoListManager = ({
             </div>
           ))}
         </div>
-        
-        <form onSubmit={handleAddList} className="add-list-form">
-          <input
-            type="text"
-            value={newListName}
-            onChange={(e) => setNewListName(e.target.value)}
-            placeholder="New list name..."
-            className="add-list-input"
-          />
-          <button type="submit" className="add-list-button">
-            +
-          </button>
-        </form>
       </div>
     </div>
   );
