@@ -10,8 +10,7 @@ const TodoForm = ({ onAddTodo }) => {
         id: Date.now(),
         text: inputValue.trim(),
         completed: false,
-        createdAt: new Date().toISOString(),
-        priority: Math.random() > 0.7 ? 'high' : Math.random() > 0.4 ? 'medium' : 'low'
+        createdAt: new Date().toISOString()
       };
       onAddTodo(newTodo);
       setInputValue('');

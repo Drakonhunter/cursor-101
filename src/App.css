@@ -446,18 +446,6 @@ h1 {
   background: #00b894;
 }
 
-.priority-tag.high {
-  background: #ff4757;
-}
-
-.priority-tag.medium {
-  background: #ffa502;
-}
-
-.priority-tag.low {
-  background: #2ed573;
-}
-
 .delete-button {
   width: 24px;
   height: 24px;

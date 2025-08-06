@@ -9,12 +9,8 @@ const TodoItem = ({ todo, onToggle, onDelete }) => {
       </button>
       <span className="todo-text">{todo.text}</span>
       <div className="status-tags">
-        {todo.completed ? (
+        {todo.completed && (
           <span className="status-tag completed-tag">COMPLETED</span>
-        ) : (
-          <span className={`status-tag priority-tag ${todo.priority || 'low'}`}>
-            {(todo.priority || 'low').toUpperCase()}
-          </span>
         )}
       </div>
       <button
