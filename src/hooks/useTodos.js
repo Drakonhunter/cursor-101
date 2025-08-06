@@ -51,20 +51,8 @@ const useTodos = () => {
       alert('No valid todos found in the imported file.');
       return;
     }
-
-    // Merge with existing todos, avoiding duplicates by ID
-    setTodos(prevTodos => {
-      const existingIds = new Set(prevTodos.map(todo => todo.id));
-      const newTodos = validTodos.filter(todo => !existingIds.has(todo.id));
-      
-      if (newTodos.length === 0) {
-        alert('All todos in the file already exist in your list.');
-        return prevTodos;
-      }
-      
-      alert(`Successfully imported ${newTodos.length} new todos!`);
-      return [...prevTodos, ...newTodos];
-    });
+    
+    setTodos(validTodos);
   };
 
   return {
