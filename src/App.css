@@ -55,6 +55,160 @@ h1 {
   font-weight: 400;
 }
 
+.todo-list-manager {
+  margin-bottom: 24px;
+  padding: 20px;
+  background: #333333;
+  border-radius: 6px;
+  border: 1px solid #404040;
+}
+
+.list-selector h3 {
+  color: #e0e0e0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.list-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.list-tab {
+  background: #2a2a2a;
+  border: 1px solid #404040;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.list-tab.active {
+  border-color: #4a9eff;
+  background: #1a1a1a;
+}
+
+.list-tab-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+}
+
+.list-tab-button {
+  background: none;
+  border: none;
+  color: #e0e0e0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.list-tab.active .list-tab-button {
+  color: #4a9eff;
+}
+
+.list-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.edit-button,
+.delete-list-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  font-size: 0.8rem;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.edit-button:hover,
+.delete-list-button:hover {
+  opacity: 1;
+}
+
+.edit-list {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+}
+
+.edit-list-input {
+  flex: 1;
+  background: #1a1a1a;
+  border: 1px solid #4a9eff;
+  border-radius: 3px;
+  padding: 4px 8px;
+  color: #e0e0e0;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.edit-cancel-button {
+  background: #ff4757;
+  border: none;
+  color: white;
+  border-radius: 3px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.add-list-form {
+  display: flex;
+  gap: 8px;
+}
+
+.add-list-input {
+  flex: 1;
+  background: #2a2a2a;
+  border: 1px solid #505050;
+  border-radius: 4px;
+  padding: 8px 12px;
+  color: #e0e0e0;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.add-list-input:focus {
+  border-color: #4a9eff;
+}
+
+.add-list-button {
+  background: #00b894;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.add-list-button:hover {
+  background: #00a085;
+  transform: translateY(-1px);
+}
+
+.no-list-message {
+  text-align: center;
+  padding: 20px;
+  color: #b0b0b0;
+  font-style: italic;
+}
+
 .todo-form {
   display: flex;
   gap: 12px;

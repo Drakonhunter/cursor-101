@@ -1,6 +1,8 @@
-const TodoStats = ({ todos }) => {
-  const completedCount = todos.filter(todo => todo.completed).length;
-  const totalCount = todos.length;
+const TodoStats = ({ activeList }) => {
+  if (!activeList) return null;
+  
+  const completedCount = activeList.todos.filter(todo => todo.completed).length;
+  const totalCount = activeList.todos.length;
 
   if (totalCount === 0) return null;
 

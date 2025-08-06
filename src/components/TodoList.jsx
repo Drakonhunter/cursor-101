@@ -1,17 +1,25 @@
 import TodoItem from './TodoItem';
 
-const TodoList = ({ todos, onToggle, onDelete }) => {
-  if (todos.length === 0) {
+const TodoList = ({ activeList, onToggle, onDelete }) => {
+  if (!activeList) {
     return (
       <div className="empty-state">
-        <p>No todos yet! Add one above to get started.</p>
+        <p>Select or create a todo list to get started!</p>
+      </div>
+    );
+  }
+
+  if (activeList.todos.length === 0) {
+    return (
+      <div className="empty-state">
+        <p>No todos in "{activeList.name}" yet! Add one above to get started.</p>
       </div>
     );
   }
 
   return (
     <div className="todo-list">
-      {todos.map(todo => (
+      {activeList.todos.map(todo => (
         <TodoItem
           key={todo.id}
           todo={todo}

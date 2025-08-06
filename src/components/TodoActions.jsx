@@ -1,34 +1,36 @@
 import { useRef } from 'react';
 
-const TodoActions = ({ todos, onImportTodos }) => {
+const TodoActions = ({ todoLists, onImportTodoLists }) => {
   const fileInputRef = useRef(null);
 
-  const exportTodos = () => {
-    const dataStr = JSON.stringify(todos, null, 2);
+  const exportTodoLists = () => {
+    if (!todoLists || todoLists.length === 0) return;
+    
+    const dataStr = JSON.stringify(todoLists, null, 2);
     const dataBlob = new Blob([dataStr], { type: 'application/json' });
     const url = URL.createObjectURL(dataBlob);
     
     const link = document.createElement('a');
     link.href = url;
-    link.download = `todo-list-${new Date().toISOString().split('T')[0]}.json`;
+    link.download = `todo-lists-${new Date().toISOString().split('T')[0]}.json`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
   };
 
-  const importTodos = (event) => {
+  const importTodoLists = (event) => {
     const file = event.target.files[0];
     if (!file) return;
 
     const reader = new FileReader();
     reader.onload = (e) => {
       try {
-        const importedTodos = JSON.parse(e.target.result);
-        if (Array.isArray(importedTodos)) {
-          onImportTodos(importedTodos);
+        const importedLists = JSON.parse(e.target.result);
+        if (Array.isArray(importedLists)) {
+          onImportTodoLists(importedLists);
         } else {
-          alert('Invalid file format. Please select a valid todo list file.');
+          alert('Invalid file format. Please select a valid todo lists file.');
         }
       } catch (error) {
         alert('Error reading file. Please make sure it\'s a valid JSON file.');
@@ -48,29 +50,29 @@ const TodoActions = ({ todos, onImportTodos }) => {
     <div className="todo-actions">
       <div className="action-buttons">
         <button 
-          onClick={exportTodos} 
+          onClick={exportTodoLists} 
           className="action-button export-button"
-          disabled={todos.length === 0}
+          disabled={!todoLists || todoLists.length === 0}
         >
-          📤 Export Todos
+          📤 Export All Lists
         </button>
         <button 
           onClick={handleImportClick} 
           className="action-button import-button"
         >
-          📥 Import Todos
+          📥 Import All Lists
         </button>
       </div>
       <input
         ref={fileInputRef}
         type="file"
         accept=".json"
-        onChange={importTodos}
+        onChange={importTodoLists}
         style={{ display: 'none' }}
       />
-      {todos.length > 0 && (
+      {todoLists && todoLists.length > 0 && (
         <div className="export-info">
-          <small>Share your todo list by exporting and sending the file to others!</small>
+          <small>Share all your todo lists by exporting and sending the file to others!</small>
         </div>
       )}
     </div>
