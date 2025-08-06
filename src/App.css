@@ -18,9 +18,10 @@ body {
 .app {
   min-height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   padding: 20px;
+  padding-top: 40px;
 }
 
 .container {
@@ -30,7 +31,6 @@ body {
   padding: 32px;
   width: 100%;
   max-width: 700px;
-  min-height: 500px;
   border: 1px solid #404040;
 }
 
