@@ -128,11 +128,6 @@ const TodoActions = ({ todoLists, onImportTodoLists }) => {
         accept=".json"
         onChange={importTodoLists}
       />
-      {todoLists && todoLists.length > 0 && (
-        <ExportInfo>
-          <small>Share all your todo lists by exporting and sending the file to others!</small>
-        </ExportInfo>
-      )}
     </ActionsContainer>
   );
 };
