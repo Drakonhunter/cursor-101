@@ -113,7 +113,7 @@ const CommentInput = styled.textarea`
   background: #333333;
   color: #e0e0e0;
   resize: vertical;
-  min-height: 60px;
+  min-height: 120px;
   font-family: inherit;
   margin-bottom: 8px;
 
