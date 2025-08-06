@@ -10,8 +10,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: #1a1a1a;
   min-height: 100vh;
+  color: #e0e0e0;
 }
 
 .app {
@@ -23,65 +24,76 @@ body {
 }
 
 .container {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  padding: 40px;
+  background: #2a2a2a;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  padding: 32px;
   width: 100%;
-  max-width: 600px;
+  max-width: 700px;
   min-height: 500px;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border: 1px solid #404040;
 }
 
 header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #404040;
 }
 
 h1 {
-  color: #1a202c;
-  font-size: 2.25rem;
+  color: #ffffff;
+  font-size: 2rem;
   font-weight: 600;
   margin-bottom: 8px;
   letter-spacing: -0.025em;
 }
 
 .subtitle {
-  color: #4a5568;
-  font-size: 1rem;
+  color: #b0b0b0;
+  font-size: 0.95rem;
   font-weight: 400;
 }
 
 .todo-form {
   display: flex;
   gap: 12px;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
+  padding: 20px;
+  background: #333333;
+  border-radius: 6px;
+  border: 1px solid #404040;
 }
 
 .todo-input {
   flex: 1;
-  padding: 14px 18px;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  font-size: 0.95rem;
+  padding: 12px 16px;
+  border: 1px solid #505050;
+  border-radius: 4px;
+  font-size: 0.9rem;
   transition: all 0.2s ease;
   outline: none;
-  background: #fafbfc;
+  background: #2a2a2a;
+  color: #e0e0e0;
+}
+
+.todo-input::placeholder {
+  color: #808080;
 }
 
 .todo-input:focus {
-  border-color: #3182ce;
-  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
-  background: white;
+  border-color: #4a9eff;
+  box-shadow: 0 0 0 2px rgba(74, 158, 255, 0.2);
+  background: #2a2a2a;
 }
 
 .add-button {
-  padding: 14px 20px;
-  background: #3182ce;
+  padding: 12px 20px;
+  background: #4a9eff;
   color: white;
   border: none;
-  border-radius: 8px;
-  font-size: 0.95rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -89,9 +101,9 @@ h1 {
 }
 
 .add-button:hover {
-  background: #2c5aa0;
+  background: #3a8eef;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(49, 130, 206, 0.2);
+  box-shadow: 0 4px 12px rgba(74, 158, 255, 0.3);
 }
 
 .add-button:active {
@@ -102,104 +114,138 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 14px 18px;
-  background: #f8fafc;
-  border-radius: 8px;
-  margin-bottom: 24px;
-  font-size: 0.875rem;
-  color: #4a5568;
-  border: 1px solid #e2e8f0;
+  padding: 12px 16px;
+  background: #333333;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  font-size: 0.85rem;
+  color: #b0b0b0;
+  border: 1px solid #404040;
 }
 
 .progress {
-  color: #3182ce;
+  color: #4a9eff;
   font-weight: 500;
 }
 
 .todo-list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .todo-item {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 14px 16px;
-  background: #fafbfc;
-  border-radius: 8px;
+  padding: 12px 16px;
+  background: #333333;
+  border-radius: 4px;
   transition: all 0.2s ease;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #404040;
 }
 
 .todo-item:hover {
-  background: #f1f5f9;
-  border-color: #cbd5e0;
+  background: #3a3a3a;
+  border-color: #505050;
 }
 
 .todo-item.completed {
-  opacity: 0.6;
-  background: #f8fafc;
+  opacity: 0.7;
+  background: #2a2a2a;
 }
 
 .todo-item.completed .todo-text {
   text-decoration: line-through;
-  color: #718096;
+  color: #808080;
 }
 
 .checkbox {
-  width: 20px;
-  height: 20px;
-  border: 2px solid #cbd5e0;
-  border-radius: 4px;
-  background: white;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #505050;
+  border-radius: 3px;
+  background: #2a2a2a;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
   flex-shrink: 0;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
+  color: transparent;
 }
 
 .checkbox.checked {
-  background: #3182ce;
-  border-color: #3182ce;
+  background: #4a9eff;
+  border-color: #4a9eff;
   color: white;
 }
 
 .checkbox:hover {
-  border-color: #3182ce;
+  border-color: #4a9eff;
 }
 
 .todo-text {
   flex: 1;
-  font-size: 0.95rem;
-  color: #2d3748;
+  font-size: 0.9rem;
+  color: #e0e0e0;
   transition: all 0.2s ease;
   font-weight: 400;
 }
 
+.status-tags {
+  display: flex;
+  gap: 8px;
+  margin-right: 8px;
+}
+
+.status-tag {
+  padding: 4px 8px;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: white;
+  white-space: nowrap;
+}
+
+.completed-tag {
+  background: #00b894;
+}
+
+.priority-tag.high {
+  background: #ff4757;
+}
+
+.priority-tag.medium {
+  background: #ffa502;
+}
+
+.priority-tag.low {
+  background: #2ed573;
+}
+
 .delete-button {
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   border: none;
-  background: #fed7d7;
-  color: #e53e3e;
-  border-radius: 6px;
+  background: #ff4757;
+  color: white;
+  border-radius: 3px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: 500;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 .delete-button:hover {
-  background: #feb2b2;
+  background: #ff3742;
   opacity: 1;
   transform: scale(1.05);
 }
@@ -207,15 +253,18 @@ h1 {
 .empty-state {
   text-align: center;
   padding: 40px 20px;
-  color: #718096;
+  color: #808080;
   font-style: normal;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  background: #333333;
+  border-radius: 4px;
+  border: 1px solid #404040;
 }
 
 @keyframes slideIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
@@ -226,16 +275,17 @@ h1 {
 /* Responsive design */
 @media (max-width: 640px) {
   .container {
-    padding: 24px;
+    padding: 20px;
     margin: 10px;
   }
   
   h1 {
-    font-size: 1.875rem;
+    font-size: 1.75rem;
   }
   
   .todo-form {
     flex-direction: column;
+    padding: 16px;
   }
   
   .add-button {

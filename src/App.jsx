@@ -14,7 +14,8 @@ function App() {
         id: Date.now(),
         text: inputValue.trim(),
         completed: false,
-        createdAt: new Date().toISOString()
+        createdAt: new Date().toISOString(),
+        priority: Math.random() > 0.7 ? 'high' : Math.random() > 0.4 ? 'medium' : 'low'
       }
       var newTodos = [...todos, newTodo];
       setTodos(newTodos);
@@ -83,6 +84,15 @@ function App() {
                   {todo.completed && <span>✓</span>}
                 </button>
                 <span className="todo-text">{todo.text}</span>
+                <div className="status-tags">
+                  {todo.completed ? (
+                    <span className="status-tag completed-tag">COMPLETED</span>
+                  ) : (
+                    <span className={`status-tag priority-tag ${todo.priority || 'low'}`}>
+                      {(todo.priority || 'low').toUpperCase()}
+                    </span>
+                  )}
+                </div>
                 <button
                   onClick={() => deleteTodo(todo.id)}
                   className="delete-button"
