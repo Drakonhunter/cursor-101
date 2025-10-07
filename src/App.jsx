@@ -5,7 +5,9 @@ import TodoForm from './components/TodoForm';
 import TodoStats from './components/TodoStats';
 import TodoList from './components/TodoList';
 import TodoActions from './components/TodoActions';
+import ThemeToggle from './components/ThemeToggle';
 import useTodos from './hooks/useTodos';
+import { useTheme } from './contexts/ThemeContext';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -20,9 +22,10 @@ const GlobalStyle = createGlobalStyle`
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: #1a1a1a;
+    background: ${props => props.$theme.background};
     min-height: 100vh;
-    color: #e0e0e0;
+    color: ${props => props.$theme.text};
+    transition: background 0.3s ease, color 0.3s ease;
   }
 `;
 
@@ -33,19 +36,21 @@ const AppContainer = styled.div`
   justify-content: center;
   padding: 20px;
   padding-top: 40px;
-  background: #1a1a1a;
+  background: ${props => props.$theme.background};
+  transition: background 0.3s ease;
 `;
 
 const MainContainer = styled.div`
-  background: #2a2a2a;
+  background: ${props => props.$theme.containerBg};
   border-radius: 8px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 32px ${props => props.$theme.shadow};
   width: 100%;
   max-width: 1200px;
   min-height: 600px;
-  border: 1px solid #404040;
+  border: 1px solid ${props => props.$theme.border};
   display: flex;
   overflow: hidden;
+  transition: all 0.3s ease;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -56,16 +61,17 @@ const MainContainer = styled.div`
 
 const Sidebar = styled.div`
   width: 280px;
-  background: #333333;
-  border-right: 1px solid #404040;
+  background: ${props => props.$theme.sidebarBg};
+  border-right: 1px solid ${props => props.$theme.border};
   padding: 24px;
   display: flex;
   flex-direction: column;
+  transition: all 0.3s ease;
 
   @media (max-width: 768px) {
     width: 100%;
     border-right: none;
-    border-bottom: 1px solid #404040;
+    border-bottom: 1px solid ${props => props.$theme.border};
     padding: 16px;
   }
 `;
@@ -84,44 +90,48 @@ const MainContent = styled.div`
 const EmptyState = styled.div`
   text-align: center;
   padding: 40px 20px;
-  color: #808080;
+  color: ${props => props.$theme.textMuted};
   font-style: normal;
   font-size: 0.9rem;
-  background: #333333;
+  background: ${props => props.$theme.sidebarBg};
   border-radius: 4px;
-  border: 1px solid #404040;
+  border: 1px solid ${props => props.$theme.border};
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.3s ease;
 `;
 
 function App() {
-  const { 
-    todoLists, 
-    activeList, 
+  const {
+    todoLists,
+    activeList,
     activeListId,
-    addList, 
-    updateList, 
-    deleteList, 
+    addList,
+    updateList,
+    deleteList,
     setActiveList,
-    addTodo, 
-    toggleTodo, 
-    deleteTodo, 
+    addTodo,
+    toggleTodo,
+    deleteTodo,
     updateTodoComment,
-    importTodos, 
-    importTodoLists 
+    importTodos,
+    importTodoLists
   } = useTodos();
+
+  const { theme } = useTheme();
 
   return (
     <>
-      <GlobalStyle />
-      <AppContainer>
-        <MainContainer>
-          <Sidebar>
+      <GlobalStyle $theme={theme} />
+      <AppContainer $theme={theme}>
+        <MainContainer $theme={theme}>
+          <Sidebar $theme={theme}>
             <Header />
+            <ThemeToggle />
             <TodoActions todoLists={todoLists} onImportTodoLists={importTodoLists} />
-            <TodoListManager 
+            <TodoListManager
               todoLists={todoLists}
               activeListId={activeListId}
               onAddList={addList}
@@ -135,7 +145,7 @@ function App() {
               <>
                 <TodoForm onAddTodo={addTodo} />
                 <TodoStats activeList={activeList} />
-                <TodoList 
+                <TodoList
                   activeList={activeList}
                   onToggle={toggleTodo}
                   onDelete={deleteTodo}
@@ -143,7 +153,7 @@ function App() {
                 />
               </>
             ) : (
-              <EmptyState>
+              <EmptyState $theme={theme}>
                 <p>Select or create a todo list to get started!</p>
               </EmptyState>
             )}
