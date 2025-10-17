@@ -24,7 +24,7 @@ const Subtitle = styled.p`
 const Header = () => {
   return (
     <HeaderContainer>
-      <Title>Task Manager</Title>
+      <Title>Todo Manager</Title>
       <Subtitle>Organize your workflow efficiently</Subtitle>
     </HeaderContainer>
   );
